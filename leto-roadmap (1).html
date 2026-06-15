@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script>document.documentElement.className+=' js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Операция: Лето — план Миши</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0C1118;
+    --surface:#151C26;
+    --surface2:#1C2530;
+    --line:#2A3542;
+    --text:#EDE9E0;
+    --muted:#8A96A6;
+    --gold:#F2B23D;
+    --coral:#FF5C49;
+    --green:#4FD18B;
+    --disp:'Unbounded',sans-serif;
+    --body:'Manrope',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-120px;right:-120px;
+    width:380px;height:380px;
+    background:radial-gradient(circle,rgba(242,178,61,.18),transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:22px;
+  }
+  h1{
+    font-family:var(--disp);
+    font-weight:900;
+    font-size:clamp(40px,9vw,82px);
+    line-height:.94;
+    letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  h1 .sun{color:var(--gold)}
+  .thesis{
+    font-size:clamp(16px,2.4vw,20px);
+    color:var(--muted);
+    max-width:620px;
+    margin-bottom:40px;
+  }
+  .thesis b{color:var(--text);font-weight:700}
+
+  .counters{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-bottom:34px;
+  }
+  .counter{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 18px;
+  }
+  .counter .num{
+    font-family:var(--disp);
+    font-weight:800;
+    font-size:clamp(30px,6vw,48px);
+    line-height:1;
+    color:var(--gold);
+  }
+  .counter.coral .num{color:var(--coral)}
+  .counter .lbl{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:10px;
+  }
+  .progress-shell{
+    height:10px;
+    background:var(--surface2);
+    border-radius:99px;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .progress-fill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--gold),#ffd47a);
+    border-radius:99px;
+    transition:width 1.1s cubic-bezier(.2,.8,.2,1);
+  }
+  .progress-cap{
+    display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:11px;color:var(--muted);
+    margin-top:10px;letter-spacing:.08em;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .sec-head{margin-bottom:34px}
+  .sec-tag{
+    font-family:var(--mono);font-size:12px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--gold);
+    display:flex;align-items:center;gap:12px;margin-bottom:16px;
+  }
+  .sec-tag::before{content:"";width:26px;height:1px;background:var(--gold)}
+  h2{
+    font-family:var(--disp);
+    font-weight:800;
+    font-size:clamp(26px,5vw,40px);
+    line-height:1.02;
+    letter-spacing:-.01em;
+  }
+  .sec-sub{color:var(--muted);margin-top:14px;max-width:640px;font-size:15.5px}
+
+  /* ---------- MONEY MATH ---------- */
+  .math-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+  .math-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:14px;padding:24px 20px;position:relative;
+  }
+  .math-card .route{
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:14px;
+  }
+  .math-card .formula{
+    font-family:var(--disp);font-weight:700;font-size:24px;color:var(--text);
+  }
+  .math-card .formula span{color:var(--gold)}
+  .math-card .note{color:var(--muted);font-size:13.5px;margin-top:12px}
+  .math-foot{
+    margin-top:22px;background:var(--surface2);border:1px dashed var(--line);
+    border-radius:12px;padding:18px 20px;font-size:15px;color:var(--text);
+  }
+  .math-foot b{color:var(--gold)}
+
+  /* ---------- DAILY ENGINE ---------- */
+  .engine{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:18px;padding:8px;margin-top:8px;
+  }
+  .task{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 18px;border-radius:12px;cursor:pointer;
+    transition:background .18s;user-select:none;
+  }
+  .task:hover{background:var(--surface2)}
+  .task + .task{border-top:1px solid var(--line)}
+  .box{
+    flex-shrink:0;width:26px;height:26px;border-radius:7px;
+    border:2px solid var(--line);margin-top:2px;position:relative;
+    transition:all .18s;
+  }
+  .task[data-done="1"] .box{background:var(--green);border-color:var(--green)}
+  .box::after{
+    content:"";position:absolute;left:8px;top:3px;width:6px;height:12px;
+    border:solid var(--bg);border-width:0 3px 3px 0;transform:rotate(45deg) scale(0);
+    transition:transform .18s;
+  }
+  .task[data-done="1"] .box::after{transform:rotate(45deg) scale(1)}
+  .task .ttime{
+    font-family:var(--mono);font-size:11px;color:var(--gold);
+    letter-spacing:.08em;margin-bottom:5px;
+  }
+  .task .ttitle{font-weight:700;font-size:16px}
+  .task[data-done="1"] .ttitle{color:var(--muted);text-decoration:line-through}
+  .task .tdesc{color:var(--muted);font-size:13.5px;margin-top:4px}
+  .task.reward .box{border-style:dashed;border-color:var(--coral)}
+  .task.reward[data-done="1"] .box{background:var(--coral);border-color:var(--coral)}
+  .task.reward .ttime{color:var(--coral)}
+
+  .engine-foot{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 18px 10px;flex-wrap:wrap;gap:14px;
+  }
+  .day-state{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .day-state b{color:var(--green)}
+  .reset{
+    font-family:var(--mono);font-size:12px;color:var(--muted);
+    background:none;border:1px solid var(--line);border-radius:8px;
+    padding:8px 14px;cursor:pointer;transition:all .18s;letter-spacing:.06em;
+  }
+  .reset:hover{border-color:var(--coral);color:var(--coral)}
+
+  /* ---------- LAWS ---------- */
+  .laws{display:grid;gap:12px;margin-top:8px}
+  .law{
+    display:flex;gap:18px;align-items:baseline;
+    background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid var(--gold);border-radius:12px;padding:18px 20px;
+  }
+  .law .n{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--gold);min-width:34px}
+  .law p{font-size:15.5px}
+  .law p b{color:var(--text)}
+  .law:nth-child(1){border-left-color:var(--coral)}
+  .law:nth-child(1) .n{color:var(--coral)}
+
+  /* ---------- CAMPAIGN / PHASES ---------- */
+  .phase{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:16px;padding:26px;margin-bottom:16px;position:relative;
+    overflow:hidden;
+  }
+  .phase::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);
+  }
+  .phase.p0::before{background:var(--muted)}
+  .phase.p4::before{background:var(--coral)}
+  .phase-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .phase-id{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .phase-dates{font-family:var(--mono);font-size:12px;color:var(--gold);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:6px 12px;white-space:nowrap}
+  .phase h3{font-family:var(--disp);font-weight:700;font-size:22px;margin:4px 0 6px}
+  .phase-goal{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+  .phase-goal b{color:var(--gold)}
+  .weeks{display:grid;gap:10px;margin-bottom:18px}
+  .week{display:flex;gap:14px;font-size:14.5px;align-items:baseline}
+  .week .wk{font-family:var(--mono);font-size:11px;color:var(--gold);min-width:60px;letter-spacing:.05em;flex-shrink:0;padding-top:2px}
+  .week .wtxt b{color:var(--text)}
+  .week .wtxt{color:var(--muted)}
+  .milestone{
+    display:flex;gap:12px;align-items:center;
+    background:var(--surface2);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;font-size:14.5px;
+  }
+  .milestone .flag{font-size:18px}
+  .milestone b{color:var(--green)}
+
+  /* ---------- METRICS ---------- */
+  .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:8px}
+  .metric{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .metric .mname{font-weight:700;font-size:15px;margin-bottom:6px}
+  .metric .mwhy{color:var(--muted);font-size:13px}
+  .metric .micon{font-family:var(--mono);color:var(--gold);font-size:12px;letter-spacing:.1em;margin-bottom:12px}
+
+  /* ---------- RECOVERY ---------- */
+  .recovery{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:8px;margin-top:8px}
+  .rrow{display:flex;gap:18px;padding:18px 20px;align-items:flex-start}
+  .rrow + .rrow{border-top:1px solid var(--line)}
+  .rrow .when{font-family:var(--mono);font-size:12px;color:var(--coral);min-width:140px;flex-shrink:0;letter-spacing:.04em;padding-top:2px}
+  .rrow .what{font-size:15px}
+  .rrow .what b{color:var(--text)}
+
+  /* ---------- FINAL ---------- */
+  .final{padding:72px 0 88px;text-align:center}
+  .final h2{margin-bottom:20px}
+  .final p{color:var(--muted);max-width:560px;margin:0 auto 8px;font-size:16px}
+  .final .kick{
+    font-family:var(--disp);font-weight:800;color:var(--gold);
+    font-size:clamp(20px,4vw,30px);margin-top:28px;line-height:1.2;
+  }
+
+  /* ---------- COURSE ---------- */
+  .course-verdict{
+    background:var(--surface2);border:1px solid var(--line);
+    border-left:3px solid var(--coral);border-radius:12px;
+    padding:18px 22px;margin-top:8px;font-size:15px;
+  }
+  .course-verdict b{color:var(--coral)}
+  .course-grid{display:grid;gap:12px;margin-top:18px}
+  .cblock{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;
+  }
+  .cblock .tag{
+    font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 10px;border-radius:6px;white-space:nowrap;flex-shrink:0;margin-top:2px;min-width:96px;text-align:center;
+  }
+  .cblock .tag.skip{background:rgba(138,150,166,.15);color:var(--muted);border:1px solid var(--line)}
+  .cblock .tag.skim{background:rgba(242,178,61,.14);color:var(--gold);border:1px solid rgba(242,178,61,.35)}
+  .cblock .tag.read{background:rgba(79,209,139,.14);color:var(--green);border:1px solid rgba(79,209,139,.35)}
+  .cblock .cname{font-weight:700;font-size:15px;margin-bottom:3px}
+  .cblock .cwhat{color:var(--muted);font-size:13.5px}
+  .course-law{
+    margin-top:18px;background:var(--surface);border:1px dashed var(--gold);
+    border-radius:12px;padding:18px 22px;font-size:15px;
+  }
+  .course-law b{color:var(--gold)}
+  @media(max-width:720px){
+    .cblock{flex-direction:column;gap:8px}
+  }
+
+  /* ---------- OUTREACH / MESSAGES ---------- */
+  .msg-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
+  .msg-card.primary{border-color:rgba(242,178,61,.5);box-shadow:0 0 0 1px rgba(242,178,61,.12)}
+  .msg-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--surface2)}
+  .msg-label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+  .copy-btn{font-family:var(--mono);font-size:11px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:7px;padding:6px 12px;cursor:pointer;transition:all .18s;white-space:nowrap;letter-spacing:.04em}
+  .copy-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .copy-btn.copied{border-color:var(--green);color:var(--green)}
+  .copytext{padding:18px;white-space:pre-wrap;font-size:14.5px;line-height:1.62;color:var(--text)}
+  .copytext .ph{color:var(--gold);font-weight:600}
+  .why-line{background:var(--surface2);border:1px dashed var(--line);border-radius:10px;padding:14px 18px;font-size:13.5px;color:var(--muted);margin:2px 0 22px}
+  .why-line b{color:var(--gold)}
+
+  .niche-grid{display:grid;gap:12px;margin-top:8px}
+  .niche-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .niche-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+  .niche-name{font-weight:700;font-size:15px}
+  .niche-name span{color:var(--gold)}
+  .niche-pain{padding:11px 18px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--surface2)}
+  .niche-pain b{color:var(--coral)}
+
+  /* ---------- THREADS ---------- */
+  .threads-note{background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:16px 20px;font-size:14.5px;margin-top:8px}
+  .threads-note b{color:var(--gold)}
+  .slots{display:grid;gap:10px;margin-top:20px}
+  .slot{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .slot .si{font-size:22px;flex-shrink:0;line-height:1.1}
+  .slot .sname{font-weight:700;font-size:15px;margin-bottom:3px}
+  .slot .sname span{font-family:var(--mono);font-size:10px;color:var(--gold);margin-left:8px;letter-spacing:.1em;text-transform:uppercase}
+  .slot .sdesc{color:var(--muted);font-size:13.5px}
+
+  .sub-h{font-family:var(--disp);font-weight:700;font-size:19px;margin:30px 0 6px}
+  .sub-p{color:var(--muted);font-size:14px;margin-bottom:14px;max-width:640px}
+  .hook-bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .hook{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 13px;font-size:13px;color:var(--text);transition:border-color .18s}
+  .hook:hover{border-color:var(--gold)}
+
+  .post-cat{font-family:var(--disp);font-weight:700;font-size:17px;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+  .post-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  .post-card .pc-foot{display:flex;justify-content:flex-end;padding:0 16px 14px;margin-top:-4px}
+
+  /* reveal — прячем только если JS работает; иначе всё видно сразу */
+  html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+  html.js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html.js .reveal{opacity:1;transform:none;transition:none}
+    .progress-fill{transition:none}
+  }
+
+  @media(max-width:720px){
+    .counters{grid-template-columns:1fr;gap:10px}
+    .math-grid{grid-template-columns:1fr}
+    .rrow{flex-direction:column;gap:6px}
+    .rrow .when{min-width:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Операция · Лето 2026 · Миша</div>
+    <h1>Перестать<br>говорить «<span class="sun">завтра</span>».</h1>
+    <p class="thesis">Ты умеешь делать сайты. Кейсы есть. Проблема одна — <b>клиентов ноль, потому что продаёшь плохо</b>. Это лето не про новые курсы. Оно про одно: научиться приводить клиентов и выйти на стабильный доход.</p>
+
+    <div class="counters">
+      <div class="counter coral"><div class="num" id="daysLeft">—</div><div class="lbl">дней до 1 сентября</div></div>
+      <div class="counter"><div class="num" id="dayNum">—</div><div class="lbl">день операции</div></div>
+      <div class="counter"><div class="num">$1500</div><div class="lbl">цель / месяц</div></div>
+    </div>
+
+    <div class="progress-shell"><div class="progress-fill" id="progFill"></div></div>
+    <div class="progress-cap"><span>15 июня</span><span id="progPct">0%</span><span>31 августа</span></div>
+  </div>
+</header>
+
+<!-- MONEY MATH -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Математика</div>
+      <h2>$1500 — это не гора. Это пара нормальных сделок.</h2>
+      <p class="sec-sub">«Полторашка» звучит страшно, пока она абстрактная. Разложи в числа — и станет ясно, что это горстка обычных заказов. Выбери маршрут и держи его перед глазами.</p>
+    </div>
+    <div class="math-grid">
+      <div class="math-card">
+        <div class="route">Маршрут А · мелкий чек</div>
+        <div class="formula"><span>10</span> × $150</div>
+        <div class="note">Твой нынешний уровень. Много заказов, быстро, низкий порог для клиента. Хорош для старта и набивки кейсов.</div>
+      </div>
+      <div class="math-card">
+        <div class="route">Маршрут Б · средний чек</div>
+        <div class="formula"><span>5</span> × $300</div>
+        <div class="note">Сюда растёшь после первых отзывов. Меньше людей, больше денег с каждого. Главная цель к августу.</div>
+      </div>
+      <div class="math-card">
+        <div class="route">Маршрут В · стабильность</div>
+        <div class="formula"><span>3</span>×$300 + <span>6</span>×$50</div>
+        <div class="note">Разовые сайты + ежемесячная поддержка/хостинг. Подписки = доход, который капает, даже когда ты не продаёшь.</div>
+      </div>
+    </div>
+    <div class="math-foot">Запомни: <b>первая цель не $1500, а первый $1.</b> Закрыл первого клиента — доказал, что схема работает. Дальше только повторяешь и поднимаешь чек.</div>
+  </div>
+</section>
+
+<!-- DAILY ENGINE -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Движок дня</div>
+      <h2>Каждый день — один и тот же цикл. 3 часа.</h2>
+      <p class="sec-sub">Не нужно настроение, не нужна мотивация. Нужен порядок действий, который ты повторяешь и в хороший день, и в плохой. КС никто не отнимает — но он стоит <b>после</b> работы, а не до. Награда, а не право.</p>
+    </div>
+
+    <div class="engine" id="engine">
+      <div class="task" data-id="t1">
+        <div class="box"></div>
+        <div><div class="ttime">00:00 – 00:30 · разогрев</div>
+        <div class="ttitle">Открыть CRM, фоллоуапы, ответы</div>
+        <div class="tdesc">Сначала — табличка с клиентами и непрочитанные диалоги. Никакой ленты и КС до этого. Просто вошёл в работу.</div></div>
+      </div>
+      <div class="task" data-id="t2">
+        <div class="box"></div>
+        <div><div class="ttime">00:30 – 02:00 · деньги (святое)</div>
+        <div class="ttitle">2–3 персональных демо + отправить аутрич</div>
+        <div class="tdesc">Главное действие лета. Сделал кусок сайта под конкретный бизнес → отправил с текстом «сначала покажи, потом продай». Это двигает деньги, остальное — нет.</div></div>
+      </div>
+      <div class="task" data-id="t3">
+        <div class="box"></div>
+        <div><div class="ttime">02:00 – 02:45 · прокачка</div>
+        <div class="ttitle">Доделать заказы / нужный кусок курса</div>
+        <div class="tdesc">Если есть клиент — доводишь его сайт. Если нет — берёшь из курса ТОЛЬКО то, что нужно прямо сейчас. Не «весь курс подряд» — это способ спрятаться от продаж.</div></div>
+      </div>
+      <div class="task" data-id="t4">
+        <div class="box"></div>
+        <div><div class="ttime">02:45 – 03:00 · лог</div>
+        <div class="ttitle">Записать цифры дня</div>
+        <div class="tdesc">Сколько демо отправил / сколько ответов / сколько $. Что не считаешь — то не растёт. 5 строк в табличку — и день закрыт.</div></div>
+      </div>
+      <div class="task reward" data-id="t5">
+        <div class="box"></div>
+        <div><div class="ttime">после работы · награда</div>
+        <div class="ttitle">КС — максимум 1 час</div>
+        <div class="tdesc">Заработал. Теперь можно. Но не 3 часа как раньше, а час — и не до работы, а после. Порядок важнее силы воли.</div></div>
+      </div>
+
+      <div class="engine-foot">
+        <div class="day-state">Сегодня закрыто: <b id="doneCount">0</b> / 5</div>
+        <button class="reset" id="resetBtn">сбросить день</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTREACH -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Аутрич · твои сообщения</div>
+      <h2>Не «рассказать», а «показать».</h2>
+      <p class="sec-sub">Твоё прошлое сообщение было неплохим — но оно всё ещё про то, что ты предлагаешь, и заканчивалось «расскажу подробнее». Клиенту лень слушать рассказ. Покажи готовый кусок — и отвечать будут в разы чаще. Жми «копировать», подставляй <span style="color:var(--gold)">[имя]</span> и ссылку на демо.</p>
+    </div>
+
+    <div class="msg-card primary" data-copy>
+      <div class="msg-head"><span class="msg-label">★ Главная · с готовым демо</span><button class="copy-btn">копировать</button></div>
+      <div class="copytext">Здравствуйте! Заметил ваш магазин на Яндекс.Картах — а сайта у вас нет. При этом люди, которые ищут «купить букет <span class="ph">[город]</span>», обычно заказывают у тех, чей сайт открылся первым.
+
+Я за вечер собрал черновик главной страницы под ваш магазин — вот ссылка: <span class="ph">[ссылка на демо]</span>
+
+Если понравится — доведу до конца: каталог букетов с фото, ценами и приёмом заказов. Если нет — просто пользуйтесь, денег не нужно.
+
+Показать, как будет выглядеть каталог?</div>
+    </div>
+
+    <div class="why-line"><b>Почему работает:</b> сразу его проблема (теряет клиентов) → доказательство (готовое демо) → ноль риска («не нужно денег») → лёгкий вопрос в конце. На такое отвечают в десятки раз чаще, чем на «интересно?».</div>
+
+    <div class="msg-card" data-copy>
+      <div class="msg-head"><span class="msg-label">Запасная · без демо</span><button class="copy-btn">копировать</button></div>
+      <div class="copytext">Здравствуйте! Заметил ваш цветочный на картах — клиенты есть, а сайта нет. А ведь половина заказов сейчас идёт от тех, кто загуглил «букет <span class="ph">[город]</span>» и зашёл на первый сайт.
+
+Я делаю сайты для цветочных: каталог с фото, ценами и формой заказа. Готов за свой счёт собрать демо именно под ваш магазин, чтобы вы посмотрели вживую — без обязательств.
+
+Скинуть?</div>
+    </div>
+
+    <div class="msg-card" data-copy>
+      <div class="msg-head"><span class="msg-label">Фоллоуап · через 2–3 дня молчания</span><button class="copy-btn">копировать</button></div>
+      <div class="copytext">Здравствуйте! Возможно, сообщение потерялось 🙂 Это я про сайт для вашего цветочного. Если коротко — соберу демо бесплатно, посмотрите вживую и сами решите. Интересно глянуть?</div>
+    </div>
+    <div class="why-line"><b>Не пропускай фоллоуап.</b> Примерно половина ответов приходит со второго касания. Один раз написал и забил — половину клиентов слил впустую.</div>
+
+    <div class="sub-h">Шаблоны под другие ниши</div>
+    <p class="sub-p">Тот же принцип: его боль → готовое демо → без риска → лёгкий вопрос. Меняется только под нишу. Косметология и стоматология — приоритет: там чек большой, один клиент окупает твой сайт за день.</p>
+
+    <div class="niche-grid">
+      <div class="niche-card" data-copy>
+        <div class="niche-top"><span class="niche-name">🦷 Стоматология / <span>косметология</span></span><button class="copy-btn">копировать</button></div>
+        <div class="niche-pain"><b>Боль:</b> высокий чек, перед записью человек гуглит и смотрит сайт, цены, врачей. Нет сайта — меньше доверия — уходит к соседям.</div>
+        <div class="copytext">Здравствуйте! Нашёл вашу клинику на картах. Перед записью люди почти всегда заходят на сайт — посмотреть услуги, цены, врачей. Без сайта часть из них выбирает тех, у кого он есть.
+
+Собрал черновик страницы под вашу клинику: <span class="ph">[ссылка]</span>. Если зайдёт — докручу с онлайн-записью. Показать?</div>
+      </div>
+
+      <div class="niche-card" data-copy>
+        <div class="niche-top"><span class="niche-name">🔧 Автосервис / <span>шиномонтаж</span></span><button class="copy-btn">копировать</button></div>
+        <div class="niche-pain"><b>Боль:</b> когда ломается машина, человек гуглит «сервис рядом» и звонит туда, где сразу видно услуги, цены и можно записаться.</div>
+        <div class="copytext">Здравствуйте! Вижу ваш автосервис на картах. Когда у человека ломается машина, он ищет «автосервис рядом» и звонит туда, где сразу видно услуги и цены.
+
+Собрал демо сайта под вас — с прайсом и онлайн-записью: <span class="ph">[ссылка]</span>. Довести до конца?</div>
+      </div>
+
+      <div class="niche-card" data-copy>
+        <div class="niche-top"><span class="niche-name">✂️ Барбершоп / <span>салон красоты</span></span><button class="copy-btn">копировать</button></div>
+        <div class="niche-pain"><b>Боль:</b> клиент выбирает глазами — по фото работ и удобной онлайн-записи. Конкуренция дикая, визуал решает всё.</div>
+        <div class="copytext">Здравствуйте! Заметил ваш барбершоп на картах. В этой нише клиент выбирает глазами — по фото работ и удобной онлайн-записи.
+
+Собрал страницу под вас с галереей и записью: <span class="ph">[ссылка]</span>. Показать, как работает запись?</div>
+      </div>
+
+      <div class="niche-card" data-copy>
+        <div class="niche-top"><span class="niche-name">☕ Кафе / <span>кофейня</span></span><button class="copy-btn">копировать</button></div>
+        <div class="niche-pain"><b>Боль:</b> люди смотрят меню и фото перед тем как зайти или заказать доставку. Нет сайта с меню — выбирают соседнее место.</div>
+        <div class="copytext">Здравствуйте! Заглянул на ваши страницы — а сайта с меню нет. Люди часто смотрят меню и фото перед тем как зайти или заказать доставку.
+
+Собрал демо с меню и фото под ваше кафе: <span class="ph">[ссылка]</span>. Докрутить?</div>
+      </div>
+
+      <div class="niche-card" data-copy>
+        <div class="niche-top"><span class="niche-name">🔨 Ремонт / <span>мебель на заказ</span></span><button class="copy-btn">копировать</button></div>
+        <div class="niche-pain"><b>Боль:</b> дорогой чек, клиент выбирает по портфолио — хочет видеть ваши работы до того, как написать.</div>
+        <div class="copytext">Здравствуйте! Вижу, вы делаете ремонт. В этой нише клиент выбирает по портфолио — хочет увидеть ваши работы, прежде чем написать.
+
+Собрал страницу-портфолио под вас: <span class="ph">[ссылка]</span>. Добавлю ваши проекты и доведу до конца — показать?</div>
+      </div>
+
+      <div class="niche-card" data-copy>
+        <div class="niche-top"><span class="niche-name">🏋️ Фитнес / <span>студия</span></span><button class="copy-btn">копировать</button></div>
+        <div class="niche-pain"><b>Боль:</b> выбирают зал по расписанию, ценам и онлайн-записи на пробное занятие.</div>
+        <div class="copytext">Здравствуйте! Заметил вашу студию. Люди выбирают зал по расписанию, ценам и возможности записаться на пробное онлайн.
+
+Собрал демо под вас с расписанием и записью: <span class="ph">[ссылка]</span>. Показать?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE SETUP -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Профиль · оформление</div>
+      <h2>Сначала упакуй профиль — потом постинг.</h2>
+      <p class="sec-sub">Пустой профиль сливает весь трафик: человек заходит, не понимает зачем подписываться, и уходит. Эти 5 правок делаешь один раз — и профиль начинает удерживать людей. Жми «копировать».</p>
+    </div>
+
+    <div class="msg-card" data-copy>
+      <div class="msg-head"><span class="msg-label">1 · Имя (ищется в поиске Threads)</span><button class="copy-btn">копировать</button></div>
+      <div class="copytext">Михаил — сайты на AI</div>
+    </div>
+
+    <div class="msg-card primary" data-copy>
+      <div class="msg-head"><span class="msg-label">2 · Био</span><button class="copy-btn">копировать</button></div>
+      <div class="copytext">🚀 Сайты и боты под ключ через AI
+📈 Показываю изнутри, как на этом зарабатывать
+🎁 Рабочие схемы и шаблоны — в Telegram
+👇</div>
+    </div>
+
+    <div class="why-line"><b>3 · Аватарка:</b> поставь своё лицо, а не логотип MS. В Threads подписываются на людей, не на лого — особенно когда контент про твой путь. Логотип прибереги для сайтов и кейсов.</div>
+
+    <div class="msg-card" data-copy>
+      <div class="msg-head"><span class="msg-label">4 · Закреплённая ветка</span><button class="copy-btn">копировать</button></div>
+      <div class="copytext">Мне ещё нет 18, и я решил, что это лето не сольётся в игры — выхожу с нуля на заработок на сайтах.
+
+Без курсов-разводов и пустых обещаний. Пишу всё как есть: сколько отправил, сколько ответили, сколько заработал.
+
+Делаешь сайты, хочешь начать или просто любишь следить за чужим путём с нуля — тебе сюда.
+
+Рабочие фишки кидаю в Telegram 👇
+t.me/msukhdev</div>
+    </div>
+
+    <div class="why-line"><b>5 · Ссылка:</b> t.me/msukhdev оставляй — но проверь, что по ней не пусто. Зашёл человек, а там голый чат без единого поста — трафик слит. Положи туда пару постов или оффер.</div>
+
+    <div class="threads-note"><b>Важно про деньги (тебе 14):</b> приём оплат почти везде с 18. Подключи родителя как «финотдел» — оплаты идут через их карту. В РФ с 14 лет можно оформить самозанятость с согласия родителя: это легально и клиенты доверяют больше. Я не юрист — детали уточни с родителем, но так делают все нормальные ребята, кто начал рано.</div>
+  </div>
+</section>
+
+<!-- THREADS -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Threads-движок</div>
+      <h2>5 постов в день. Один каждого типа.</h2>
+      <p class="sec-sub">Твои «5 постов на каждый день» — это не 5 случайных мыслей, а 5 ролей. Каждый день закрываешь по одному слоту из каждого типа. Берёшь хук из банка, заготовку снизу — адаптируешь под себя. Цель: цеплять охваты и тащить людей в профиль, где они видят, что ты делаешь сайты.</p>
+    </div>
+
+    <div class="threads-note"><b>Честно:</b> готовых уникальных постов на все 78 дней не бывает — это будет филлер, который не читают. Поэтому тут <b>система + банк заготовок</b>. Этого хватит на старт; когда захочешь свежую пачку под свои реальные цифры — скажешь, накидаю ещё.</div>
+
+    <div class="slots">
+      <div class="slot"><span class="si">🪝</span><div><div class="sname">Хук / горячее мнение <span>пост 1</span></div><div class="sdesc">Резкое мнение, которое цепляет и провоцирует комменты. Имей позицию — нейтралочка не летит.</div></div></div>
+      <div class="slot"><span class="si">💡</span><div><div class="sname">Польза за 15 секунд <span>пост 2</span></div><div class="sdesc">Маленький конкретный совет, который хочется сохранить. Сохранения и репосты гонят охват.</div></div></div>
+      <div class="slot"><span class="si">🛠</span><div><div class="sname">Build in public <span>пост 3</span></div><div class="sdesc">Твой путь в реальном времени: что отправил, что ответили, сколько заработал. Люди залипают на чужой прогресс.</div></div></div>
+      <div class="slot"><span class="si">💬</span><div><div class="sname">Вовлекающий байт <span>пост 4</span></div><div class="sdesc">Вопрос или мини-спор, на который легко ответить. Каждый коммент = плюс к охвату.</div></div></div>
+      <div class="slot"><span class="si">📈</span><div><div class="sname">Пруф / результат <span>пост 5</span></div><div class="sdesc">Скрин переписки, первый платёж, кейс. Доказательство = доверие = клиенты из профиля.</div></div></div>
+    </div>
+
+    <div class="sub-h">7 правил, чтобы залетало</div>
+    <div class="laws">
+      <div class="law"><div class="n">1</div><p><b>Первая строка решает всё.</b> Threads обрезает текст. Если первая строка не остановила палец — пост мёртв. Начинай с хука, не со вступления.</p></div>
+      <div class="law"><div class="n">2</div><p><b>1 пост = 1 мысль.</b> Не пихай всё в один. Пять отдельных постов соберут больше, чем одна простыня.</p></div>
+      <div class="law"><div class="n">3</div><p><b>Заканчивай вопросом или призывом.</b> «А ты как думаешь?», «сохрани». Комменты гонят охват сильнее лайков.</p></div>
+      <div class="law"><div class="n">4</div><p><b>Отвечай на каждый коммент в первый час.</b> Алгоритм любит активность под постом. Запостил — сиди в комментах.</p></div>
+      <div class="law"><div class="n">5</div><p><b>Комментируй крупные аккаунты в нише.</b> Твой коммент под их постом видят их подписчики. Бесплатный охват.</p></div>
+      <div class="law"><div class="n">6</div><p><b>Контра бьёт нейтралочку.</b> Безопасные посты не летят. Скажи то, с чем половина не согласится.</p></div>
+      <div class="law"><div class="n">7</div><p><b>Постоянство важнее гениальности.</b> 5 средних постов каждый день обгонят 1 идеальный раз в неделю. Объём — это алгоритм.</p></div>
+    </div>
+
+    <div class="sub-h">Банк хуков · первая строка</div>
+    <p class="sub-p">Останавливают палец. Ставь в начало любого поста и дописывай мысль.</p>
+    <div class="hook-bank">
+      <span class="hook">Непопулярное мнение:</span>
+      <span class="hook">Никто не скажет тебе это бесплатно, но…</span>
+      <span class="hook">Если тебе нет 20 и ты ещё на нуле — прочти.</span>
+      <span class="hook">Все думают X. На самом деле Y.</span>
+      <span class="hook">Перестань делать это, если хочешь зарабатывать:</span>
+      <span class="hook">Вот почему ты до сих пор на нуле:</span>
+      <span class="hook">Один навык важнее диплома прямо сейчас:</span>
+      <span class="hook">Я был на твоём месте год назад. Что изменилось:</span>
+      <span class="hook">Это разозлит половину людей:</span>
+      <span class="hook">Пока ты сомневаешься, кто-то моложе уже делает.</span>
+      <span class="hook">3 вещи, которые я бы сказал себе в 16.</span>
+      <span class="hook">Самый быстрый способ начать без вложений:</span>
+      <span class="hook">Тебе не нужен курс за 50к, чтобы…</span>
+      <span class="hook">Хватит учиться. Начни делать.</span>
+      <span class="hook">Я потратил месяц, чтобы понять одно:</span>
+      <span class="hook">Сохрани, если когда-нибудь хотел…</span>
+    </div>
+
+    <div class="sub-h">Банк готовых постов</div>
+    <p class="sub-p">Бери, адаптируй, подставляй СВОИ реальные цифры. Врать в build-in-public нельзя — спалят и доверие сгорит.</p>
+
+    <div class="post-cat">🪝 Горячее мнение</div>
+    <div class="post-card" data-copy><div class="copytext">Непопулярное мнение: курсы по программированию за 50к — пустая трата.
+
+В 2026 рабочий сайт собирается за вечер через AI. Платят не за код. Платят за то, что ты вообще решился написать клиенту.
+
+Навык не в кнопках. Навык в том, чтобы продавать.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Знаешь, почему 90% тех, кто «учит кодинг», не заработают ни рубля?
+
+Учиться — не страшно. Страшно написать незнакомому человеку и услышать «нет».
+
+Деньги начинаются ровно там, где заканчивается зона комфорта.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Самая переоценённая вещь — мотивация.
+Самая недооценённая — система.
+
+Я не жду настроения. У меня есть 3 часа в день и список действий. Всё.
+
+Мотивация — для тех, кто ещё не начал.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Тебе не нужен идеальный продукт, чтобы начать брать деньги.
+
+Тебе нужен один клиент, который скажет «да».
+
+Всё остальное — отговорки, чтобы не начинать сегодня.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Диплом не принесёт тебе денег.
+
+Умение прийти к человеку и решить его проблему за деньги — принесёт.
+
+Этому не учат в универе. И почти не учат на курсах. А это единственное, что работает.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+
+    <div class="post-cat">💡 Польза за 15 секунд</div>
+    <div class="post-card" data-copy><div class="copytext">Как написать первое сообщение клиенту, чтобы ответили:
+
+1. Не пиши о себе — пиши о его проблеме
+2. Не проси — покажи готовый кусок
+3. Убери риск: «не понравится — ничего не должны»
+
+Сохрани, пригодится.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">3 фразы, которые убивают твоё сообщение клиенту:
+
+«Готов сделать вам сайт»
+«Интересно?»
+«Меня зовут… я занимаюсь…»
+
+Всё это про тебя. Клиенту плевать на тебя. Говори про его деньги.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Холодная рассылка «не работает»? Проверь цифры.
+
+10 сообщений — это не рассылка, это разминка.
+Норма — 1–3 ответа на 100.
+
+Хочешь клиента — отправь 100, а не 10. Большинство сдаётся на двадцатом.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Лучший способ продать сайт — не предлагать его, а показать готовым.
+
+Собери демо под конкретный бизнес ДО того, как написал.
+
+Долго? 30 минут. Зато отвечают, а не игнорят.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Сайт можно собрать за вечер без знания кода:
+
+1. Опиши AI задачу: роль, структура, стиль
+2. Попроси HTML+CSS одним файлом
+3. Открой в браузере
+
+Найти клиента — сложнее, чем сделать сайт. Вот где реальная работа.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+
+    <div class="post-cat">🛠 Build in public</div>
+    <div class="post-card" data-copy><div class="copytext">День 1. Цель — выйти на $1500/мес на сайтах за лето.
+Сейчас: $0.
+
+Отправил первые 10 демо цветочным магазинам. Буду выкладывать всё — и ответы, и игноры.
+
+Погнали.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Отправил [30] сообщений. Ответили [2]. Один готов платить за сайт.
+
+Тот самый момент, когда понимаешь: схема работает. Надо просто отправлять больше.
+
+[подставь свои цифры]</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Раньше сидел в КС по 3 часа в день.
+
+Теперь играю час — но только после работы.
+
+Простое правило, которое поменяло всё: сначала дело, потом награда.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Закрыл первого клиента. [$150]. Сайт собрал за пару часов.
+
+Знаю, это мало. Но это доказательство, что из нуля можно.
+
+Дальше только поднимать чек.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Веду этот блог, чтобы не слиться.
+
+Когда на тебя смотрят — сложнее сказать «завтра».
+
+Если ты тоже что-то начинаешь — пиши в комменты, будем тащить вместе.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+
+    <div class="post-cat">💬 Вовлекающий байт</div>
+    <div class="post-card" data-copy><div class="copytext">Что мешает тебе начать зарабатывать в интернете?
+
+Напиши одно слово в комменты. Разберу каждого, кто ответит.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Согласен, что диплом в 2026 почти ничего не стоит?
+
+Ставь + если да, − если нет.
+
+Интересно посмотреть на раскол в комментах.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">КС / Дота / соцсети / ничего — что съедает твоё время больше всего?
+
+Признавайся честно, я начну: КС, 3 часа в день. Уже режу.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Один навык, который изменил бы твою жизнь, если прокачать его за лето — какой?
+
+Пиши. Самые частые ответы разберу отдельным постом.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Тебе сколько лет и чем занимаешься?
+
+Я первый: в процессе к стабильному заработку на сайтах. Не стесняйся — тут все свои, кто что-то начинает.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+
+    <div class="post-cat">📈 Пруф / результат</div>
+    <div class="post-card" data-copy><div class="copytext">Первые [$100] с сайта, который собрал за вечер.
+
+Не миллионы. Но недавно у меня было ровно $0 и куча отговорок.
+
+Начни — остальное приложится. [прикрепи скрин]</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Скрин переписки: «нашёл вас на картах, собрал демо под вас» → через час «вау, а сколько стоит довести?».
+
+Вот так работает «сначала покажи». Без впаривания. [прикрепи скрин]</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">[2] клиента за неделю. Оба — с холодного сообщения, оба с готовым демо.
+
+Никакой магии. Просто отправил больше, чем поленились отправить остальные.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+    <div class="post-card" data-copy><div class="copytext">Месяц назад: 0 клиентов, 0 рублей, сидел в КС.
+Сейчас: [3] заказа в работе.
+
+Изменилось одно — я начал писать людям каждый день.</div><div class="pc-foot"><button class="copy-btn">копировать</button></div></div>
+  </div>
+</section>
+
+<!-- LAWS -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">5 законов лета</div>
+      <h2>Правила, которые не обсуждаются.</h2>
+      <p class="sec-sub">Лень всегда найдёт аргумент. Эти законы — ответ заранее, чтобы не спорить с собой в моменте.</p>
+    </div>
+    <div class="laws">
+      <div class="law"><div class="n">1</div><p><b>«Завтра» — запрещённое слово.</b> Лень? Делаешь урезанную версию — 1 демо вместо 3, но НЕ ноль. Ноль дней не бывает.</p></div>
+      <div class="law"><div class="n">2</div><p><b>Сначала работа — потом КС.</b> Игра стоит после трёх часов. Открыл КС до работы — день считается сорванным.</p></div>
+      <div class="law"><div class="n">3</div><p><b>Минимум 2 демо в день.</b> Не «написать пару сообщений», а сделать готовый кусок сайта и отправить. Демо бьёт текст в десятки раз.</p></div>
+      <div class="law"><div class="n">4</div><p><b>Считаешь цифры каждый день.</b> Отправлено / ответов / $. Без цифр ты не управляешь — ты надеешься.</p></div>
+      <div class="law"><div class="n">5</div><p><b>Раз в неделю — разбор.</b> В воскресенье скидываешь мне цифры недели: что сработало, что нет, что меняем. Куратор есть — пользуйся.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Твой курс · разбор</div>
+      <h2>Курс — это фундамент, а не план заработка.</h2>
+      <p class="sec-sub">Курс bakatkin (блоки 0–3) учит делать сайты через AI: вайбкодинг, устройство сайта, генерация структуры и дизайна, Figma Make. Хороший ликбез — но вот честная правда.</p>
+    </div>
+
+    <div class="course-verdict">Весь курс — про <b>производство сайтов</b>, то есть про то, что у тебя и так получается. В нём <b>ноль про поиск клиентов, переписку и закрытие сделок</b> — а именно из-за этого у тебя сейчас ноль денег. Поэтому курс не цель лета, а справочник. Открываешь под конкретную задачу — и закрываешь.</div>
+
+    <div class="course-grid">
+      <div class="cblock">
+        <span class="tag skim">пролистать</span>
+        <div><div class="cname">Блок 0 — Введение в вайбкодинг</div><div class="cwhat">Формула промпта (роль/задача/контекст/структура/формат) — единственное полезное. Остальное ты уже знаешь.</div></div>
+      </div>
+      <div class="cblock">
+        <span class="tag skim">пролистать</span>
+        <div><div class="cname">Блок 1 — База Web</div><div class="cwhat">Фронт/бэк, хостинг, домен, деплой. Глянь раздел про деплой и хостинг — это пригодится, когда будешь сдавать сайт клиенту. Остальное по верхам.</div></div>
+      </div>
+      <div class="cblock">
+        <span class="tag read">взять в работу</span>
+        <div><div class="cname">Блок 2 — Структура, УТП, дизайн</div><div class="cwhat">Самое ценное для денег: как собрать продающую структуру и УТП. Это прямо влияет на качество твоих демо. Прочитай вдумчиво.</div></div>
+      </div>
+      <div class="cblock">
+        <span class="tag read">взять в работу</span>
+        <div><div class="cname">Блок 3 — Figma Make</div><div class="cwhat">Инструмент для быстрых макетов. Освой ровно настолько, чтобы лепить демо под клиента за 30 минут — не глубже.</div></div>
+      </div>
+    </div>
+
+    <div class="course-law"><b>Закон по учёбе:</b> курс проходишь только в блоке «прокачка» движка дня (45 минут) и только то, что нужно под текущую задачу. Никаких «сначала пройду весь курс, потом начну продавать». Продажи и учёба идут параллельно с первого дня.</div>
+  </div>
+</section>
+
+<!-- CAMPAIGN -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Кампания · 5 фаз</div>
+      <h2>От нуля клиентов до стабильного потока.</h2>
+      <p class="sec-sub">Каждая фаза — своя одна задача. Не распыляйся: пока не закрыл цель фазы, следующая не существует. Движок дня крутится поверх всех фаз.</p>
+    </div>
+
+    <!-- PHASE 0 -->
+    <div class="phase p0">
+      <div class="phase-top">
+        <span class="phase-id">Фаза 0 · подготовка</span>
+        <span class="phase-dates">15 – 18 июня</span>
+      </div>
+      <h3>Собрать машину</h3>
+      <p class="phase-goal">Цель: <b>перестать крутиться на месте и собрать инструменты.</b> 4 дня — и больше к настройке не возвращаемся.</p>
+      <div class="weeks">
+        <div class="week"><span class="wk">день 1</span><span class="wtxt"><b>Выбрать ОДНУ нишу</b> и записать почему (стоматологии / косметологи / автосервисы / барбершопы / ремонт). Решение, не раздумье.</span></div>
+        <div class="week"><span class="wk">день 1</span><span class="wtxt"><b>Выбрать маршрут к $1500</b> из таблицы математики. Повесить число перед глазами.</span></div>
+        <div class="week"><span class="wk">день 2</span><span class="wtxt"><b>Собрать болванку демо</b> — шаблон лендинга, который кастомизируется под клиента за 30 минут.</span></div>
+        <div class="week"><span class="wk">день 2</span><span class="wtxt"><b>Написать 3 текста аутрича</b> по методу «сначала покажи» (присылай мне — доведём до рабочего).</span></div>
+        <div class="week"><span class="wk">день 3</span><span class="wtxt"><b>Спарсить 30 контактов</b> ниши с Яндекс.Карт в таблицу.</span></div>
+        <div class="week"><span class="wk">день 4</span><span class="wtxt"><b>Завести CRM</b> в Google Sheets: контакт / статус / дата / ответ / $. Это твой пульт.</span></div>
+      </div>
+      <div class="milestone"><span class="flag">🏁</span><span>Готово, когда: <b>есть ниша, шаблон демо, текст и 30 контактов в табличке.</b></span></div>
+    </div>
+
+    <!-- PHASE 1 -->
+    <div class="phase">
+      <div class="phase-top">
+        <span class="phase-id">Фаза 1 · первый контакт</span>
+        <span class="phase-dates">19 июня – 2 июля</span>
+      </div>
+      <h3>Получить первые ответы</h3>
+      <p class="phase-goal">Цель: <b>не деньги, а ответы.</b> Доказать, что новый подход вообще цепляет людей.</p>
+      <div class="weeks">
+        <div class="week"><span class="wk">нед. 1</span><span class="wtxt">Каждый день по движку: <b>2–3 демо + отправка.</b> К концу недели — 15+ отправленных демо.</span></div>
+        <div class="week"><span class="wk">нед. 1</span><span class="wtxt"><b>Фоллоуап</b> по молчунам через 2–3 дня. Половина ответов приходит со второго касания.</span></div>
+        <div class="week"><span class="wk">нед. 2</span><span class="wtxt">Докрутить текст и демо по реакции. <b>Первый живой диалог / созвон.</b></span></div>
+      </div>
+      <div class="milestone"><span class="flag">🎯</span><span>Готово, когда: <b>3–5 ответов и хотя бы 1 предметный диалог о заказе.</b></span></div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase">
+      <div class="phase-top">
+        <span class="phase-id">Фаза 2 · первые деньги</span>
+        <span class="phase-dates">3 – 23 июля</span>
+      </div>
+      <h3>Закрыть первого клиента</h3>
+      <p class="phase-goal">Цель: <b>первый платёж, потом второй и третий.</b> $100 → $300 за месяц.</p>
+      <div class="weeks">
+        <div class="week"><span class="wk">нед. 3</span><span class="wtxt"><b>Закрыть первую сделку</b> — даже за $100. Главное — пробить ноль. Аутрич не останавливаешь.</span></div>
+        <div class="week"><span class="wk">нед. 4</span><span class="wtxt"><b>Сдать заказ и взять отзыв + кейс.</b> Скрин, ссылка, пара слов клиента. Это твоё оружие на потом.</span></div>
+        <div class="week"><span class="wk">нед. 5</span><span class="wtxt"><b>Поднять чек</b> после отзыва. 2–3 клиента в работе одновременно.</span></div>
+      </div>
+      <div class="milestone"><span class="flag">💵</span><span>Готово, когда: <b>первые деньги на счету и минимум 1 кейс с отзывом.</b></span></div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase">
+      <div class="phase-top">
+        <span class="phase-id">Фаза 3 · система</span>
+        <span class="phase-dates">24 июля – 13 августа</span>
+      </div>
+      <h3>Сделать поток повторяемым</h3>
+      <p class="phase-goal">Цель: <b>$500–800 и предсказуемость.</b> Не «повезло с клиентом», а понятная воронка.</p>
+      <div class="weeks">
+        <div class="week"><span class="wk">нед. 6</span><span class="wtxt"><b>Поднять цены.</b> Демо-метод + кейсы позволяют просить больше. Перестань демпинговать.</span></div>
+        <div class="week"><span class="wk">нед. 7</span><span class="wtxt"><b>Добавить 2-й канал:</b> Kwork активно + Avito + профильные Telegram-чаты + рекомендации от первых клиентов.</span></div>
+        <div class="week"><span class="wk">нед. 8</span><span class="wtxt"><b>Допродажа поддержки/хостинга</b> за ежемесячную плату. Первые подписки = первый стабильный доход.</span></div>
+      </div>
+      <div class="milestone"><span class="flag">⚙️</span><span>Готово, когда: <b>2+ канала заявок и первые повторные / реферальные клиенты.</b></span></div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase p4">
+      <div class="phase-top">
+        <span class="phase-id">Фаза 4 · масштаб</span>
+        <span class="phase-dates">14 – 31 августа</span>
+      </div>
+      <h3>Подойти к $1500 и закрепиться</h3>
+      <p class="phase-goal">Цель: <b>выйти на траекторию $1000–1500</b> и встретить 1 сентября не с виной, а с цифрами.</p>
+      <div class="weeks">
+        <div class="week"><span class="wk">нед. 9</span><span class="wtxt"><b>Чек до $300–500.</b> Ты уже не новичок без кейсов — ты с портфолио и отзывами.</span></div>
+        <div class="week"><span class="wk">нед. 10</span><span class="wtxt"><b>Пул из 3–5 активных клиентов</b> + подписки на поддержку. Стабилизировать загрузку.</span></div>
+        <div class="week"><span class="wk">нед. 11</span><span class="wtxt"><b>Шаблонизировать всё:</b> от первого письма до сдачи. Чтобы сентябрь начался не с нуля, а с разгона.</span></div>
+      </div>
+      <div class="milestone"><span class="flag">🔥</span><span>Готово, когда: <b>стабильный поток заявок и месяц, закрытый на $1000–1500 — или чёткая траектория туда.</b></span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Приборная панель</div>
+      <h2>Что мерить каждый день.</h2>
+      <p class="sec-sub">Пять чисел. Заноси их в CRM в конце дня (задача №4 движка). По ним сразу видно, где затык — мало шлёшь или плохой текст.</p>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="micon">01</div><div class="mname">Демо отправлено</div><div class="mwhy">Главный рычаг. Нет ответов → почти всегда мало отправлено.</div></div>
+      <div class="metric"><div class="micon">02</div><div class="mname">Ответов получено</div><div class="mwhy">Норма холодного аутрича — 1–3 ответа на 100. Меньше → чини текст.</div></div>
+      <div class="metric"><div class="micon">03</div><div class="mname">Диалогов / созвонов</div><div class="mwhy">Сколько ответов дошло до разговора о деньгах.</div></div>
+      <div class="metric"><div class="micon">04</div><div class="mname">Сделок закрыто</div><div class="mwhy">Факт. Деньги на счету, а не «вроде договорились».</div></div>
+      <div class="metric"><div class="micon">05</div><div class="mname">Заработано $</div><div class="mwhy">Итог. Сравниваешь с целью месяца и видишь дистанцию.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOVERY -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Срыв-протокол</div>
+      <h2>Когда (не если) ты пропустишь день.</h2>
+      <p class="sec-sub">План, который ломается от одного пропуска — мусор. Ты пропустишь дни, это нормально. Важно не «не падать», а быстро вставать. Вот как.</p>
+    </div>
+    <div class="recovery">
+      <div class="rrow"><div class="when">пропустил 1 день</div><div class="what"><b>Ничего не случилось.</b> Не обнуляешь прогресс, не казнишь себя. Просто завтра делаешь сегодняшний минимум. Точка.</div></div>
+      <div class="rrow"><div class="when">пропустил 2–3 дня</div><div class="what"><b>Не бросаешь.</b> Возвращаешься на текущую неделю как есть. Не пытаешься «нагнать всё разом» — это путь к новому срыву. Просто следующий обычный день.</div></div>
+      <div class="rrow"><div class="when">нет сил совсем</div><div class="what"><b>Минимальный день:</b> 1 демо + отправить. 20 минут. Это держит цепочку живой и бьёт чувство вины. Ноль — единственный настоящий провал.</div></div>
+      <div class="rrow"><div class="when">опускаются руки</div><div class="what"><b>Открываешь цифры, а не голову.</b> Чувства врут («всё зря»), цифры — нет. Скидываешь мне неделю — разберём, где реально затык, и поправим план.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CONTENT CALENDAR 30 DAYS ===== -->
+<style>
+  .cal-day{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+  .cal-day>summary{cursor:pointer;list-style:none;padding:18px 22px;display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:700;font-size:16px}
+  .cal-day>summary::-webkit-details-marker{display:none}
+  .cal-day>summary .dn{font-family:var(--mono);font-size:12px;color:var(--gold);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:6px 11px;white-space:nowrap;letter-spacing:.05em}
+  .cal-day>summary .dt{flex:1;font-weight:600;font-size:15.5px}
+  .cal-day>summary .dchev{color:var(--muted);transition:transform .2s;font-family:var(--mono)}
+  .cal-day[open]>summary{border-bottom:1px solid var(--line);color:var(--gold)}
+  .cal-day[open]>summary .dchev{transform:rotate(180deg)}
+  .cal-body{padding:14px}
+  .ptype{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:13px 16px 0}
+  .cal-cta{background:var(--surface2);border:1px dashed var(--gold);border-radius:12px;padding:18px 22px;font-size:15px;margin:22px 0 8px}
+  .cal-cta b{color:var(--gold)}
+  .prompt-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  .prompt-card .pc-foot{display:flex;justify-content:flex-end;padding:0 16px 14px;margin-top:-4px}
+  .prompt-card .copytext{font-family:var(--mono);font-size:12.5px;line-height:1.7}
+  .prompt-card .plabel{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);padding:14px 16px 0}
+  .prompt-card .pwhen{padding:4px 16px 0;color:var(--muted);font-size:13px}
+</style>
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Контент-план · 30 дней</div>
+      <h2>30 дней Threads. По 5 постов на каждый день.</h2>
+      <p class="sec-sub">150 готовых постов — по одному каждого типа на день. Открывай день, жми «копировать», подставляй СВОИ реальные цифры в [скобках] и постишь. Дни идут по логике кампании: старт → первые ответы → первые деньги → система → масштаб. Прошёл 30 дней — повторяешь круг с новыми цифрами.</p>
+    </div>
+    <div class="threads-note"><b>Как пользоваться:</b> 1 день = 1 раскрытый блок = 5 постов. Не копируй цифры вслепую — в build-in-public и пруфах ставь только то, что реально было. Враньё палят, и доверие сгорает.</div>
+    <details class="cal-day">
+      <summary><span class="dn">День 1</span><span class="dt">Старт. Объявляю цель публично</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Мне 14. К 1 сентября я выйду на $1500/мес на сайтах. Сейчас у меня $0.
+
+Будете смотреть, как я либо сделаю это, либо публично провалюсь.
+
+Сохрани профиль — через 78 дней сверим.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как объявить цель, чтобы не слиться:
+1. Назови точную цифру и дедлайн
+2. Скажи это публично
+3. Показывай прогресс каждый день
+
+Публичность держит лучше любой мотивации.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 1. $0 на счету.
+Собрал шаблон демо и спарсил 30 цветочных без сайта.
+Завтра отправляю первые 10. Поехали.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Во сколько лет ты заработал первый рубль в интернете?
+
+Мне 14, только начинаю. Напиши свой возраст — интересно, кто тут самый ранний.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Стартовый экран: CRM на 30 контактов, 0 ответов, 0 рублей.
+Через месяц вернусь к этому скрину. [скрин таблицы]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 2</span><span class="dt">Почему код больше не главное</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Непопулярное мнение: умение писать код в 2026 почти ничего не стоит.
+
+AI пишет его за тебя. Стоит другое — умение найти, кому этот сайт продать.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Сайт под клиента за вечер без знания кода:
+1. Опиши AI роль, нишу и структуру
+2. Попроси HTML+CSS одним файлом
+3. Открой в браузере, поправь текст
+
+Сложное не это. Сложное — отправить.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 2. Отправил первые 10 демо цветочным.
+Ответов пока 0, и это нормально.
+Норма — 1-3 ответа на 100. Значит, надо просто слать больше.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что тебя останавливает начать зарабатывать прямо сейчас?
+
+Одно слово в комменты. Разберу каждого, кто ответит.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">10 отправленных демо за день. Скрин CRM.
+Мало? Да. Но месяц назад я отправлял ноль. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 3</span><span class="dt">Страх написать первым</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Вот почему ты до сих пор на нуле:
+ты учишься, чтобы не пришлось писать клиенту.
+
+Код не страшный. Страшно услышать «нет». Но деньги ровно там.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">3 фразы, которые убивают первое сообщение:
+«Готов сделать вам сайт»
+«Интересно?»
+«Меня зовут… я занимаюсь…»
+
+Всё про тебя. Клиенту плевать. Говори про его деньги.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 3. Отправил ещё 12 демо.
+Первый ответ! «А сколько стоит?» — пишет цветочный.
+Руки трясутся, но схема работает.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Признавайся: сколько раз ты хотел написать клиенту, но передумал?
+
+Я — раз двадцать за неделю. Сегодня перестал.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин переписки: «собрал демо под ваш магазин» → «ого, а доделать сколько?».
+Вот так работает «сначала покажи». [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 4</span><span class="dt">Демо вместо болтовни</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Все продают словами. Поэтому всех игнорят.
+
+Я присылаю готовый кусок сайта ДО разговора о деньгах. Отвечают в разы чаще. Показывай, не рассказывай.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как сделать демо, на которое отвечают:
+1. Возьми реальное название и фото бизнеса
+2. Собери 1 экран — hero + оффер
+3. Пришли ссылку, а не описание
+
+30 минут работы — кратно больше ответов.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 4. 3 ответа из 22 демо. Один просит созвон.
+Впервые кто-то готов платить мне за сайт. $0 пока, но лёд тронулся.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что бьёт сильнее в холодном сообщении — текст или готовое демо?
+
+Ставь 🔥 за демо, 💬 за текст. У меня уже есть ответ из практики.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">22 демо за 4 дня → 3 ответа → 1 созвон.
+Воронка в цифрах, без магии. [скрин CRM]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 5</span><span class="dt">Возраст — не оправдание</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Если тебе нет 20 и ты на нуле — прочти.
+
+Твой возраст не минус, а контент. Люди залипают на тех, кто начал рано. Используй это, а не прячь.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как принимать оплату до 18:
+— подключи родителя как «финотдел»
+— в РФ с 14 можно самозанятость с согласия родителя
+— это легально и повышает доверие
+
+Не юрсовет — уточни с родителем.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 5. Созвон прошёл. Клиент думает.
+Параллельно отправил ещё 10 демо. Не сижу и не жду одного — гоню поток.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Сколько тебе лет и чем занимаешься?
+
+Я первый: 14, иду к стабильному заработку на сайтах. Тут все свои, кто что-то начинает.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Неделя 1 в цифрах: 32 демо, 4 ответа, 1 созвон, $0.
+Деньги ещё нет. Но движение есть. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 6</span><span class="dt">Система против настроения</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Самая переоценённая вещь — мотивация.
+Самая недооценённая — система.
+
+Я не жду вдохновения. 3 часа в день и список действий. Всё.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Мой движок дня (3 часа):
+30 мин — фоллоуапы
+90 мин — 2-3 демо + отправка
+45 мин — доделки
+15 мин — записать цифры
+
+Копируй, работает в любой день.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 6. Лень была адская. Сделал урезанный день: 1 демо вместо 3.
+Но не ноль. Ноль дней не существует.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что съедает твоё время больше всего: игры, соцсети, сериалы или прокрастинация?
+
+Я начну честно: КС, 3 часа в день. Уже режу до часа.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">6 дней подряд без пропуска. Скрин трекера привычки.
+Не гениальность. Просто не останавливаюсь. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 7</span><span class="dt">Первые деньги близко</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Тебе не нужен идеальный сайт, чтобы взять первые деньги.
+Тебе нужен один человек, который скажет «да».
+
+Остальное — отговорки, чтобы не начать сегодня.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как закрыть первого клиента дешевле страха:
+— первая цена пусть будет низкой
+— цель не заработать, а пробить ноль
+— взять отзыв важнее, чем взять много
+
+Первый $1 дороже следующих $100.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 7. ЕСТЬ. Первый клиент сказал да. $120 за лендинг цветочному.
+Знаю, мало. Но я пробил ноль. Теперь только вверх.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Помнишь свой первый заработок в интернете — сколько это было?
+
+У меня сегодня первый: $120. Накидай свой, без стеснения.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: первый перевод. $120.
+Недавно тут был ровно $0 и куча причин не начинать. [скрин оплаты]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 8</span><span class="dt">Сдача и отзыв</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Один отзыв стоит дороже десяти твоих слов о себе.
+
+Сделал сайт — сразу проси скрин «спасибо». Это оружие, которым ты закроешь следующих десять клиентов.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как взять отзыв, который продаёт:
+1. Сдай работу и спроси: «всё ок?»
+2. Попроси пару слов для портфолио
+3. Сохрани скрин + ссылку на сайт
+
+Отзыв в день сдачи берётся легче всего.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 8. Сдал первый сайт. Клиент доволен, дал отзыв.
+Теперь у меня есть кейс. Слать демо стало в разы увереннее.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что вам важнее при выборе исполнителя — цена, отзывы или примеры работ?
+
+Собираю мнения, чтобы упаковать профиль правильно.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Первый кейс готов: до/после + отзыв клиента.
+Один закрытый заказ = вечный аргумент. [скрин отзыва]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 9</span><span class="dt">Поднимаю чек</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Демпинг — это не скромность, это страх.
+
+Как только появился первый отзыв — поднимай цену. Дёшево = «наверное, плохо». Нормальная цена = доверие.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Когда поднимать чек:
+— после первого отзыва
+— когда демо отвечают стабильно
+— когда в работе 2+ клиента
+
+Цену двигает не наглость, а доказательства.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 9. Новому клиенту назвал $250 вместо $120.
+Не дрогнул. Он согласился. Чек растёт, когда есть кейс за спиной.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">За сколько ты бы сделал лендинг новичку, имея 1 кейс? Назови цифру.
+
+Интересно, кто занижает себя сильнее всех.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Второй заказ: $250. Скрин договорённости.
+Тот же объём, что первый за $120. Разница — один отзыв. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 10</span><span class="dt">Объём решает</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Холодная рассылка «не работает»?
+Ты отправил 10 и сдался.
+
+10 — это разминка. Норма — 1-3 ответа на 100. Хочешь клиентов — шли 100.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Где брать контакты бесплатно:
+— Яндекс/Гугл Карты по нише
+— 2ГИС
+— Авито (объявления без сайта)
+— Telegram-чаты по городу
+
+30 контактов за вечер — реально.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 10. База выросла до 80 контактов. Отправил 15 демо за день.
+Два клиента уже в работе. Поток важнее одного заказа.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Сколько холодных сообщений в день ты способен отправить, не сдавшись?
+
+Я держу 10-15. Покажи свою планку.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">10 дней: 80 контактов, 60 демо, 8 ответов, 2 оплаты ($370).
+Воронка работает на объёме. [скрин CRM]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 11</span><span class="dt">Ниша важнее всего</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Один навык важнее диплома прямо сейчас: выбрать нишу и долбить в неё.
+
+Кто пишет «всем подряд» — игнорят все. Кто пишет цветочным про цветочных — отвечают.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как выбрать нишу для старта:
+— высокий чек (стоматология, ремонт)
+— легко найти на картах
+— клиент гуглит перед покупкой
+
+Один клиент в дорогой нише окупает неделю.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 11. Перешёл на стоматологии — чек выше.
+Первое демо клинике → ответ за 2 часа. В дорогой нише деньги ближе.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Какая ниша, по-твоему, сейчас сильнее всего нуждается в сайтах?
+
+Накидай — проверю гипотезы на реальном аутриче и отчитаюсь.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Сравнил ниши: цветы — отвечают часто, но чек $120. Стоматология — реже, но $400+.
+Цифры из моей таблицы. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 12</span><span class="dt">Скорость = деньги</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Пока ты сомневаешься, кто-то моложе уже отправляет демо.
+
+Идеальный момент не наступит. Лучшее время написать клиенту было вчера. Второе лучшее — сейчас.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как собрать демо за 30 минут:
+1. Готовый шаблон-болванка
+2. Подставь название, фото, услуги
+3. Поправь заголовок под боль ниши
+
+Не с нуля каждый раз — кастомизируй базу.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 12. Сделал болванку-шаблон под стоматологии.
+Теперь демо клинике = 25 минут. Скорость отправки выросла вдвое.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Сколько времени у тебя уходит собрать простой лендинг? Честно.
+
+Я дошёл до 25 минут с шаблоном. Раньше было 3 часа.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">3 клиента в работе одновременно. Скрин канбана.
+Месяц назад не верил, что потяну больше одного. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 13</span><span class="dt">Фоллоуап = половина денег</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Половину клиентов ты сливаешь молчанием.
+
+Написал раз, не ответили — и забил. А половина ответов приходит со второго касания. Фоллоуап — это не назойливость, это деньги.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Идеальный фоллоуап:
+— через 2-3 дня молчания
+— коротко, с лёгким вопросом
+— «возможно, потерялось 🙂»
+
+Без вины и без давления. Просто напоминание.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 13. Прошёлся фоллоуапами по молчунам.
+3 новых ответа из старых контактов. Деньги лежали и ждали второго сообщения.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Ты делаешь фоллоуап или пишешь один раз и забиваешь?
+
+Признавайся честно — раньше я забивал и терял половину.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: «...» 3 дня тишины → фоллоуап → «да, давайте обсудим».
+Второе касание решает. [скрин переписки]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 14</span><span class="dt">Деньги капают сами</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Разовый сайт — это один раз.
+Поддержка и хостинг за ежемесячку — это доход, который капает, даже когда ты не продаёшь.
+
+Подписка &gt; разовая сделка.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Что продать клиенту после сайта:
+— поддержку (правки) за ежемесячку
+— хостинг и домен
+— обновление контента
+
+Первая подписка = первый стабильный $.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 14. Допродал первому клиенту поддержку: +$30/мес.
+Маленькая сумма, но она приходит сама. Начало пассивного потока.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Подписочная модель или разовые сделки — что выбираешь и почему?
+
+Я распробовал подписки на этой неделе. Делюсь выводами в комментах.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Две недели итог: $400 разово + первые $30/мес подписки.
+Траектория пошла вверх. [скрин CRM]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 15</span><span class="dt">Кейсы продают за тебя</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Лучший продавец твоих сайтов — не ты. Это твои прошлые работы.
+
+Собери 3 кейса с отзывами — и новые клиенты будут соглашаться ещё до разговора о цене.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как оформить кейс, который закрывает сделки:
+1. Скрин сайта
+2. Что было до / что стало
+3. Пара слов клиента
+
+Кидай кейсы в профиль и в первое сообщение.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 15. Собрал 3 кейса в одну папку-портфолио.
+Кинул ссылку в новое демо — клиент: «вижу, что умеете». Отвечать стали теплее.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что вас убеждает заказать у незнакомого исполнителя сильнее всего?
+
+Собираю, чтобы докрутить своё портфолио под реальные возражения.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Профиль-портфолио из 3 работ готов. Скрин.
+Полмесяца назад показывать было нечего. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 16</span><span class="dt">Половина пути</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Я начал это лето с $0 и фразой «начну завтра».
+
+Прошло 16 дней. Первые деньги, первые отзывы, первые подписки. «Завтра» так и не наступило — потому что я начал сегодня.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Чек-лист середины пути:
+— есть ниша
+— есть шаблон демо
+— есть кейсы
+— есть поток аутрича
+
+Если это есть — деньги вопрос объёма.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 16. Подвёл промежуточный итог: $430, 3 кейса, 4 клиента.
+Ещё не цель, но я уже не там, где был на старте.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Если бы у тебя было 78 дней и цель $1500 — с чего бы начал в первый день?
+
+Я начал с публичного обещания. А ты?</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Полпути: график дохода по дням. От 0 до $430.
+Кривая идёт вверх, и это главное. [скрин графика]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 17</span><span class="dt">Цена — это позиционирование</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Низкая цена не приводит больше клиентов. Она приводит худших.
+
+Те, кто торгуется за каждый рубль на старте, сожрут тебе нервы. Подними чек — поменяется и клиент.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как обосновать цену без оправданий:
+— говори про результат, не про часы
+— «сайт приведёт вам заявки», не «я потрачу 5 часов»
+— назови цену и молчи
+
+Кто первый заговорил — проиграл.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 17. Назвал $400 без скидки. Пауза… «ок».
+Главное — не оправдываться после цифры. Сказал и молчишь.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Тебе легче назвать высокую цену или ты сразу занижаешь от страха?
+
+Я занижал три недели. Сейчас учусь держать паузу.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: назвал $400, клиент согласился без торга.
+Месяц назад просил $120 и извинялся. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 18</span><span class="dt">Второй канал заявок</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Один канал заявок — это не бизнес, это везение.
+
+Холодный аутрич + биржи + рекомендации = поток, который не зависит от настроения одного источника.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Где ещё брать заказы кроме холодных:
+— Kwork / профильные биржи
+— Авито услуги
+— рекомендации первых клиентов
+— Telegram-чаты города
+
+Добавляй по одному каналу.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 18. Выложил услуги на Kwork + попросил первых клиентов порекомендовать.
+Первая входящая заявка не из холодных. Приятно.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Откуда тебе чаще приходят клиенты — холодные сообщения, биржи или сарафан?
+
+Делюсь своей раскладкой по каналам в комментах.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">3 источника заявок за неделю: аутрич (4), Kwork (1), рекомендация (1).
+Диверсификация в цифрах. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 19</span><span class="dt">Рекомендации = бесплатные клиенты</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Самый дешёвый клиент — тот, кого привёл другой клиент.
+
+Сделал хорошо — попроси порекомендовать. Большинство стесняется просить. Поэтому большинство сидит без сарафана.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как запустить сарафан:
+— после сдачи: «знаете кого-то, кому нужен сайт?»
+— дай скидку за приведённого
+— напоминай аккуратно
+
+Сарафан не появляется сам — его просят.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 19. Первый клиент привёл знакомого — автосервис.
+Ноль затрат на поиск, тёплый контакт. Сарафан включился.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Ты просишь клиентов рекомендовать тебя или ждёшь, что само пойдёт?
+
+Я три недели ждал. Начал просить — сразу привели.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: «мой знакомый тоже хочет сайт, скинул ему ваш контакт».
+Первый клиент по рекомендации. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 20</span><span class="dt">Шаблонизируй всё</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Хватит делать каждый сайт как первый.
+
+Один раз собери шаблоны: письмо, демо, договорённость, сдача. Дальше ты не работаешь больше — ты работаешь быстрее.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Что стоит шаблонизировать:
+— первое сообщение
+— болванку демо
+— список вопросов клиенту
+— чек-лист сдачи
+
+Шаблон = меньше думаешь, больше делаешь.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 20. Собрал папку шаблонов на все этапы.
+Новый клиент проходит путь от письма до сдачи без импровизации. Конвейер.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что у тебя в работе отнимает больше всего времени — поиск, переписка или сама сборка?
+
+Я замерил неделю и удивился ответу.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">20 дней: $600, 6 клиентов, 2 подписки.
+Система собрана, дальше масштаб. [скрин CRM]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 21</span><span class="dt">Отказ — это нормально</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Это разозлит половину: «нет» от клиента — это хорошо.
+
+Каждое «нет» приближает «да» и экономит тебе время. Бойся не отказов, а тишины и собственного бездействия.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Что делать с отказом:
+— не спорь и не уговаривай
+— поблагодари и оставь дверь открытой
+— запиши причину в CRM
+
+Отказ — это данные, а не приговор.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 21. 4 отказа за день. И один большой заказ на $500.
+Отказы не считаю провалом — считаю цифрой в воронке.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Как ты реагируешь на «нам не надо»? Расстраиваешься или идёшь дальше?
+
+Раньше я залипал на день. Сейчас — следующий контакт.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Три недели: 9 ответов «нет», 6 «да». Скрин воронки.
+Отказы — часть математики, а не конец. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 22</span><span class="dt">Цифры не врут</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Чувства говорят «всё зря». Цифры говорят «ты вырос в 6 раз за 3 недели».
+
+Когда опускаются руки — открывай таблицу, а не голову. Голова врёт. Таблица — нет.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">5 чисел, которые надо мерить каждый день:
+1. демо отправлено
+2. ответов
+3. диалогов
+4. сделок
+5. заработано $
+
+Что не считаешь — то не растёт.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 22. Свёл статистику за 3 недели в график.
+Видно чётко: больше демо → больше денег. Линейная зависимость, без магии.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Ты ведёшь учёт своих заявок и денег или работаешь на ощущениях?
+
+Табличка изменила мне всё. Делюсь шаблоном в комментах.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">График: демо vs доход по неделям. Растут вместе.
+Управляешь тем, что измеряешь. [скрин графика]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 23</span><span class="dt">Поднимаю до среднего чека</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Десять заказов по $150 выматывают сильнее, чем пять по $300.
+
+Меньше клиентов, больше денег с каждого, больше времени на качество. Расти в чек, а не в количество.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как перейти на средний чек:
+— добавь к сайту ценность (запись, SEO)
+— продавай результат, не страницы
+— бери меньше клиентов, но дороже
+
+Качество отзывов важнее их числа.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 23. Средний чек дошёл до $300.
+Беру меньше заказов, но каждый весомее. Меньше суеты — больше денег.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что лучше: много дешёвых заказов или мало дорогих? И почему именно так?
+
+Я переключился на дорогие — расскажу, что изменилось.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: средний чек по месяцу вырос с $120 до $300.
+Тот же я, просто перестал бояться цены. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 24</span><span class="dt">Качество держит клиента</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Привести клиента дорого. Удержать — почти бесплатно.
+
+Сделай чуть лучше, чем обещал, ответь быстро — и он вернётся сам и приведёт ещё. Сервис — это маркетинг.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как превратить клиента в постоянного:
+— сдай чуть раньше срока
+— добавь маленький бонус сверху
+— отвечай в течение часа
+
+Впечатление от сервиса продаёт следующий заказ.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 24. Старый клиент вернулся за вторым сайтом.
+Ноль усилий на поиск — просто хорошо сделал в прошлый раз. Удержание работает.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Возвращались ли к тебе клиенты повторно? Что их вернуло?
+
+У меня первый повторный — расскажу, что сработало.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: «вы делали нам сайт, нужен ещё один на второй филиал».
+Повторный клиент дешевле нового в разы. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 25</span><span class="dt">Деньги любят порядок</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Я потратил неделю, чтобы понять одно: бардак в делах = бардак в деньгах.
+
+Когда у тебя есть CRM, шаблоны и расписание — заказы перестают теряться, а доход становится предсказуемым.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Минимальная система фрилансера:
+— CRM (хоть Google Sheets)
+— папка шаблонов
+— расписание на день
+— учёт денег
+
+Это не бюрократия. Это контроль.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 25. Навёл порядок в CRM: ни один контакт не теряется.
+Раньше забывал про половину диалогов. Теперь каждый на учёте.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Чем ты ведёшь свои дела и финансы — таблица, заметки или в голове?
+
+Я был в команде «в голове». Спойлер: терял деньги.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">25 дней: $850, 8 клиентов, 3 подписки.
+Порядок = деньги перестали утекать. [скрин CRM]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 26</span><span class="dt">Близко к цели</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Месяц назад я был тем, кто «когда-нибудь начнёт».
+
+Сегодня у меня клиенты, кейсы и доход, который растёт каждую неделю. Разница между мной тогда и сейчас — один отправленный день назад.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Что отделяет тебя от первых денег:
+не навык, не возраст, не курс.
+Одно отправленное сообщение незнакомому человеку.
+
+Всё остальное — после него.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 26. До цели $1500 осталось дотянуть ~$650.
+Есть пул клиентов и подписки. Финишная прямая видна.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Если бы тебе остался месяц до цели — что бы ты делал каждый день, не отвлекаясь?
+
+Я просто повторяю движок дня. Скучно — но работает.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">График дохода: уверенный рост к цели.
+$0 → $850 за 26 дней. [скрин графика]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 27</span><span class="dt">Поднимаю на максимум</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Ты с портфолио и отзывами — это уже не тот новичок, что просил $120.
+
+Чек до $400-500 — это не наглость. Это твоя реальная цена сейчас. Перестань себя занижать.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Как дойти до чека $400-500:
+— покажи 3+ кейса в первом письме
+— продавай пакет: сайт + запись + поддержка
+— называй верхнюю цену уверенно
+
+Кейсы дают право на цену.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 27. Закрыл заказ на $450 — мой максимум.
+Тот же объём работы, что в начале за $120. Вырос не объём, вырос я.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Какой у тебя сейчас потолок по чеку и что мешает поднять его ещё?
+
+Мой потолок рос каждую неделю. Делюсь, как пробивал.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: заказ на $450. Личный рекорд.
+От $120 до $450 за месяц. Только за счёт кейсов. [скрин]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 28</span><span class="dt">Стабильность важнее рывка</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">Один удачный месяц — это везение. Повторяемый поток — это бизнес.
+
+Не гонись за разовым рывком. Построй воронку, которая даёт заявки каждую неделю, и сентябрь начнётся с разгона.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Из чего состоит стабильный поток:
+— 2+ канала заявок
+— шаблоны на все этапы
+— пул постоянных + подписки
+— ежедневный аутрич
+
+Предсказуемость &gt; удача.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 28. Неделя дала ровный поток: заявки каждый день.
+Это уже не «повезло с клиентом», а понятная система. Кайф.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Что для тебя важнее — один большой разовый заказ или стабильный поток поменьше?
+
+Я выбрал поток. Расскажу почему в комментах.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Скрин: заявки приходят каждый день недели.
+Поток, а не качели. [скрин CRM]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <details class="cal-day">
+      <summary><span class="dn">День 29</span><span class="dt">Итог лета</span><span class="dchev">▾</span></summary>
+      <div class="cal-body">
+        <div class="post-card" data-copy>
+          <div class="ptype">🪝 Хук / горячее мнение</div>
+          <div class="copytext">78 дней назад: $0, ноль клиентов, фраза «начну завтра».
+Сегодня: цель закрыта, кейсы, подписки, поток.
+
+Изменилось одно — я перестал говорить «завтра» и начал писать людям каждый день.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💡 Польза за 15 секунд</div>
+          <div class="copytext">Если выжать всё лето в один совет:
+не учись бесконечно — отправляй.
+Показывай готовое демо. Считай цифры. Не пропускай дни.
+
+Остальное — детали.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">🛠 Build in public</div>
+          <div class="copytext">День 29-30. Цель $1500/мес — взята.
+Не на удаче, а на системе, которую может повторить любой. Это только начало.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">💬 Вовлекающий байт</div>
+          <div class="copytext">Дочитал до конца? Тогда вопрос: что ты отправишь сегодня?
+
+Не завтра. Сегодня. Напиши в комменты своё первое действие — проконтролирую.</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+        <div class="post-card" data-copy>
+          <div class="ptype">📈 Пруф / результат</div>
+          <div class="copytext">Финальный скрин: $1500/мес закрыто за лето.
+С нуля, в 14, без вложений. Повторяемо. [скрин итогов]</div>
+          <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+        </div>
+      </div>
+    </details>
+    <div class="cal-cta"><b>Прошёл 30 дней?</b> Ты уже не на нуле — у тебя реальные цифры, кейсы и отклики. Скинь мне свою статистику недели, и я накидаю следующую пачку постов уже под ТВОИ настоящие результаты, а не под шаблон.</div>
+  </div>
+</section>
+
+<!-- ===== EXTRA HOOKS ===== -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Банк хуков · расширенный</div>
+      <h2>Ещё 25 первых строк, которые тормозят палец.</h2>
+      <p class="sec-sub">Первая строка = весь пост. Threads показывает только её, пока не нажмут «ещё». Не цепанул в первой строке — пост мёртв. Бери любую, ставь в начало и дописывай мысль.</p>
+    </div>
+    <div class="hook-bank">
+      <span class="hook">Тебе не нужен талант. Тебе нужен список действий.</span>
+      <span class="hook">Я в 14 зарабатываю на сайтах. Вот с чего начал:</span>
+      <span class="hook">Прочти это, если устал «готовиться» и ни разу не начал.</span>
+      <span class="hook">Деньги в интернете берут не умные, а те, кто пишет первым.</span>
+      <span class="hook">Сохрани. Через год скажешь спасибо.</span>
+      <span class="hook">90% бросят на этом шаге. Не будь как они:</span>
+      <span class="hook">Что я понял, отправив 100 холодных сообщений:</span>
+      <span class="hook">Курс за 50к не сделает тебя богатым. Это сделает:</span>
+      <span class="hook">Если ты до сих пор учишься, а не продаёшь — стоп.</span>
+      <span class="hook">Самая дорогая ошибка новичка — ждать идеального момента.</span>
+      <span class="hook">Я бы хотел узнать это в первый день, а не на третьей неделе:</span>
+      <span class="hook">Правда, которую не говорят на курсах по фрилансу:</span>
+      <span class="hook">Хочешь первого клиента за неделю? Делай ровно это:</span>
+      <span class="hook">Перестань верить, что для денег нужен возраст.</span>
+      <span class="hook">Один скрин переписки стоит больше тысячи твоих слов:</span>
+      <span class="hook">Ты не зарабатываешь не потому, что не умеешь. А потому что не пишешь.</span>
+      <span class="hook">Топ-1 причина, почему твой аутрич игнорят:</span>
+      <span class="hook">Я считал каждый день. Вот что показали цифры:</span>
+      <span class="hook">Хватит копить знания. Начни обменивать их на деньги.</span>
+      <span class="hook">Это сообщение увеличило мои ответы в разы:</span>
+      <span class="hook">Если бы я начинал заново, я бы пропустил это:</span>
+      <span class="hook">Маленький секрет, который удваивает ответы клиентов:</span>
+      <span class="hook">Не «когда-нибудь». Сегодня. Вот первый шаг:</span>
+      <span class="hook">Почему дешёвый фрилансер всегда голодный:</span>
+      <span class="hook">Тебе врут, что нужно много подписчиков для денег.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIBECODING PROMPTS ===== -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <div class="sec-tag">Вайбкодинг · банк промтов</div>
+      <h2>Промты, по которым AI собирает сайт за тебя.</h2>
+      <p class="sec-sub">Ты не пишешь код — ты пишешь промт. Вот готовая библиотека: даёшь промт нейросети (ChatGPT, Claude, Figma Make, любой вайбкодинг-инструмент) — получаешь сайт или секцию. Жми «копировать», подставляй данные в [скобках] под конкретного клиента.</p>
+    </div>
+    <div class="threads-note"><b>Правило вайбкодинга:</b> чем конкретнее промт, тем меньше правок. Всегда задавай роль, нишу, секции и формат вывода («один HTML-файл, адаптив»). Расплывчатый промт = расплывчатый сайт.</div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Формула любого промта</div>
+      <div class="pwhen">Запомни структуру — по ней строится каждый промт ниже.</div>
+      <div class="copytext">Ты — [РОЛЬ: senior веб-разработчик и UX-дизайнер].
+Задача: [ЧТО СДЕЛАТЬ: собрать лендинг для X].
+Контекст: [про бизнес, нишу, город, аудиторию].
+Структура: [перечисли секции по порядку].
+Стиль: [настроение, цвета, референс].
+Формат вывода: один файл HTML с CSS внутри, без внешних зависимостей, адаптив под мобильные.
+
+Сначала покажи план секций, потом код.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Универсальный лендинг под нишу</div>
+      <div class="pwhen">База. Меняешь данные в [скобках] под любого клиента.</div>
+      <div class="copytext">Ты senior веб-разработчик и продающий копирайтер.
+Собери одностраничный лендинг для бизнеса: [название], ниша [ниша], город [город].
+Цель сайта: получать заявки/звонки.
+Секции по порядку: hero с оффером и кнопкой, преимущества (3-4), услуги с ценами, галерея/примеры, отзывы, форма заявки, контакты с картой, футер.
+Стиль: современный, чистый, [светлый/тёмный], акцентный цвет [#цвет].
+Тексты пиши продающие, под боль клиентов ниши, без воды.
+Выдай один HTML-файл с CSS и минимальным JS внутри, полностью адаптивный.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Цветочный магазин</div>
+      <div class="pwhen">Демо за 30 минут под флористов.</div>
+      <div class="copytext">Собери лендинг для цветочного магазина [название], город [город].
+Акцент: быстрый заказ букета и доставка день в день.
+Секции: hero «букеты с доставкой за 2 часа» + кнопка заказа, каталог-карточки букетов (фото, название, цена), повод (день рождения, 8 марта, без повода), как заказать в 3 шага, отзывы, форма заказа (имя, телефон, дата, адрес), контакты.
+Стиль: тёплый, нежный, женственный, акцент пастельно-розовый.
+Один адаптивный HTML-файл.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Стоматология / косметология</div>
+      <div class="pwhen">Дорогая ниша. Упор на доверие.</div>
+      <div class="copytext">Собери лендинг для стоматологической клиники [название], город [город].
+Главное: вызвать доверие и закрыть на онлайн-запись.
+Секции: hero с УТП и кнопкой «записаться», услуги с ценами (имплантация, лечение, гигиена, отбеливание), врачи (фото, опыт), до/после, безопасность и стерильность, отзывы, онлайн-запись (услуга, дата, телефон), лицензии, контакты с картой.
+Стиль: чистый медицинский, бело-голубой, ощущение надёжности.
+Один адаптивный HTML-файл.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Автосервис / шиномонтаж</div>
+      <div class="pwhen">Упор на «быстро, рядом, цены видно».</div>
+      <div class="copytext">Собери лендинг для автосервиса [название], город [город].
+Цель: клиент сразу видит услуги, цены и звонит/записывается.
+Секции: hero «ремонт за 1 день, запись онлайн» + телефон, услуги с ценами (ТО, ходовая, двигатель, шиномонтаж), почему мы (гарантия, оригинал запчасти, сроки), прайс-таблица, онлайн-запись (авто, услуга, дата), отзывы, контакты + карта + часы работы.
+Стиль: тёмный, технологичный, акцент оранжевый/красный.
+Один адаптивный HTML-файл.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Барбершоп / салон красоты</div>
+      <div class="pwhen">Визуал решает. Упор на фото и запись.</div>
+      <div class="copytext">Собери лендинг для барбершопа [название], город [город].
+Главное: визуал работ и удобная онлайн-запись.
+Секции: hero на всё окно с фоновым фото + кнопка «записаться», услуги с ценами (стрижка, борода, комплекс), галерея работ (сетка фото), мастера, онлайн-запись (мастер, услуга, дата, время), отзывы, адрес + карта + соцсети.
+Стиль: брутальный, тёмный, акцент золото/медь, крупная типографика.
+Один адаптивный HTML-файл.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Кафе / кофейня</div>
+      <div class="pwhen">Меню и атмосфера прежде всего.</div>
+      <div class="copytext">Собери лендинг для кафе [название], город [город].
+Цель: показать меню, атмосферу и собрать заказы на доставку/брони.
+Секции: hero с фото интерьера + кнопки «меню» и «забронировать», меню по категориям (кофе, завтраки, десерты) с ценами, фото блюд, о месте/атмосфера, доставка, бронь столика (дата, время, гости), адрес + карта + часы.
+Стиль: уютный, тёплый, акцент кофейно-коричневый, аппетитные фото.
+Один адаптивный HTML-файл.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Фитнес / студия</div>
+      <div class="pwhen">Расписание, цены, пробное занятие.</div>
+      <div class="copytext">Собери лендинг для фитнес-студии [название], город [город].
+Цель: запись на пробное занятие.
+Секции: hero «первая тренировка бесплатно» + кнопка, направления (йога, силовые, групповые), расписание-таблица, тренеры, цены/абонементы, отзывы с результатами, форма записи на пробное, контакты + карта.
+Стиль: энергичный, спортивный, акцент ярко-зелёный или неон.
+Один адаптивный HTML-файл.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Ремонт / мебель на заказ</div>
+      <div class="pwhen">Дорогой чек. Упор на портфолио.</div>
+      <div class="copytext">Собери лендинг для студии ремонта/мебели на заказ [название], город [город].
+Главное: портфолио работ и расчёт стоимости.
+Секции: hero с лучшим проектом + кнопка «рассчитать», портфолио-галерея до/после, этапы работы, преимущества (договор, сроки, гарантия), калькулятор/форма расчёта (тип, площадь, контакт), отзывы, контакты.
+Стиль: премиальный, минимализм, акцент тёмно-зелёный или графит.
+Один адаптивный HTML-файл.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Только Hero-секция</div>
+      <div class="pwhen">Когда нужно быстро собрать первый экран демо.</div>
+      <div class="copytext">Сделай только hero-секцию (первый экран) лендинга для [бизнес], ниша [ниша].
+Внутри: цепляющий заголовок с оффером под боль клиента, подзаголовок, одна кнопка целевого действия, фоновое изображение или градиент.
+Стиль: [светлый/тёмный], акцент [#цвет], крупная типографика.
+Полный экран по высоте, адаптив. Один HTML-файл с CSS внутри.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Блок услуг с ценами</div>
+      <div class="pwhen">Добавить прайс на готовый сайт.</div>
+      <div class="copytext">Сгенерируй секцию «Услуги и цены» для лендинга [ниша].
+Формат: карточки или таблица. В каждой: название услуги, короткое описание, цена от.
+Добавь 5-7 типовых услуг ниши с реалистичными ценами для [город].
+Стиль согласуй с акцентным цветом [#цвет], сделай адаптивным. Только код этой секции (HTML+CSS).</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Галерея работ</div>
+      <div class="pwhen">Портфолио / примеры для визуальных ниш.</div>
+      <div class="copytext">Сделай секцию-галерею работ для [ниша].
+Сетка адаптивных карточек с фото (используй плейсхолдеры picsum.photos), при наведении — лёгкое увеличение и подпись.
+Добавь фильтр по категориям сверху (кнопки).
+Чистый код, без внешних библиотек, адаптив. Только эта секция.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Форма онлайн-записи / заявки</div>
+      <div class="pwhen">Главный конверсионный блок.</div>
+      <div class="copytext">Сделай секцию с формой [записи/заявки] для [ниша].
+Поля: [перечисли: имя, телефон, услуга, дата].
+Валидация телефона, кнопка отправки, сообщение «спасибо» после отправки (на чистом JS, без бэкенда).
+Красиво, адаптивно, акцент [#цвет]. Один блок HTML+CSS+JS.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Блок отзывов</div>
+      <div class="pwhen">Социальное доказательство.</div>
+      <div class="copytext">Сделай секцию отзывов для лендинга [ниша].
+Карточки: аватар-заглушка, имя, текст отзыва, 5 звёзд. 4-6 реалистичных отзывов под нишу.
+На мобильных — горизонтальный свайп-слайдер, на десктопе — сетка.
+Чистый код, адаптив. Только эта секция.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">FAQ-аккордеон</div>
+      <div class="pwhen">Закрыть возражения клиента.</div>
+      <div class="copytext">Сделай секцию FAQ (частые вопросы) для [ниша] в виде аккордеона на чистом HTML/CSS/JS (или details/summary).
+Добавь 6 реальных вопросов-возражений ниши с ответами, снимающими страх (сроки, гарантия, цена, как оплатить).
+Адаптив, акцент [#цвет]. Только эта секция.</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Сделать адаптив под мобилку</div>
+      <div class="pwhen">Если макет ломается на телефоне.</div>
+      <div class="copytext">Вот мой HTML-лендинг (вставь код ниже). Сделай его полностью адаптивным под мобильные:
+- все секции корректно перестраиваются на экранах от 320px
+- шрифты и отступы через clamp()
+- меню превращается в бургер
+- кнопки и формы удобны для пальца
+Верни обновлённый цельный HTML-файл.
+
+[вставь свой код]</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Добавить анимации</div>
+      <div class="pwhen">Оживить статичный сайт.</div>
+      <div class="copytext">Вот мой лендинг (код ниже). Добавь аккуратные анимации без библиотек:
+- плавное появление секций при скролле (IntersectionObserver)
+- hover-эффекты на кнопках и карточках
+- лёгкий параллакс или градиент в hero
+Ничего кричащего, всё мягко и быстро. Верни цельный HTML.
+
+[вставь свой код]</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Правки по фидбеку клиента</div>
+      <div class="pwhen">Итерация после показа демо.</div>
+      <div class="copytext">Вот текущий лендинг (код ниже). Внеси правки:
+1. [правка 1]
+2. [правка 2]
+3. [правка 3]
+Ничего кроме указанного не меняй, структуру и стиль сохрани. Верни цельный обновлённый HTML-файл.
+
+[вставь свой код]</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">Собрать всё в один файл</div>
+      <div class="pwhen">Чтобы клиенту было легко открыть.</div>
+      <div class="copytext">Возьми этот код (ниже) и собери его в ОДИН HTML-файл: весь CSS в &lt;style&gt;, весь JS в &lt;script&gt; внутри, без внешних ссылок и зависимостей, кроме шрифтов Google Fonts.
+Проверь, что открывается двойным кликом в браузере и ничего не сломано.
+
+[вставь свой код]</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+    <div class="prompt-card" data-copy>
+      <div class="plabel">SEO и мета под карты/поиск</div>
+      <div class="pwhen">Чтобы сайт находили.</div>
+      <div class="copytext">Добавь в мой HTML-лендинг (код ниже) SEO-разметку:
+- title и meta description под запрос «[услуга] [город]»
+- Open Graph теги для красивого превью в мессенджерах
+- semantic-теги (header, main, section, footer)
+- alt у всех картинок
+- favicon-заглушку
+Верни цельный обновлённый HTML.
+
+[вставь свой код]</div>
+      <div class="pc-foot"><button class="copy-btn">копировать</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap reveal">
+    <h2>1 сентября ты вспомнишь сегодняшний день.</h2>
+    <p>Либо как момент, когда ты в очередной раз сказал «завтра».</p>
+    <p>Либо как день, с которого всё началось.</p>
+    <div class="kick">Сегодня — день 1.<br>Не завтра.</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  // ---- safe storage (works when downloaded, degrades silently in sandbox) ----
+  var mem={};
+  var store={
+    get:function(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},
+    set:function(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},
+    del:function(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}
+  };
+
+  // ---- countdown / progress ----
+  var start=new Date(2026,5,15), end=new Date(2026,7,31), now=new Date();
+  var DAY=86400000;
+  var total=Math.round((end-start)/DAY)+1;
+  var elapsed=Math.floor((now-start)/DAY)+1;
+  if(elapsed<1)elapsed=1; if(elapsed>total)elapsed=total;
+  var left=Math.round((end-now)/DAY); if(left<0)left=0;
+  var pct=Math.min(100,Math.max(0,Math.round((elapsed/total)*100)));
+
+  document.getElementById('daysLeft').textContent=left;
+  document.getElementById('dayNum').textContent=elapsed;
+  document.getElementById('progPct').textContent=pct+'%';
+  setTimeout(function(){document.getElementById('progFill').style.width=pct+'%';},250);
+
+  // ---- daily checklist (auto-resets each calendar day via dated key) ----
+  var dayKey='leto_'+now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+  var saved=store.get(dayKey);
+  var done=saved?JSON.parse(saved):{};
+  var tasks=document.querySelectorAll('.task');
+  var counter=document.getElementById('doneCount');
+
+  function refresh(){
+    var c=0;
+    tasks.forEach(function(t){
+      var id=t.getAttribute('data-id');
+      if(done[id]){t.setAttribute('data-done','1');c++;}
+      else{t.removeAttribute('data-done');}
+    });
+    counter.textContent=c;
+  }
+  tasks.forEach(function(t){
+    t.addEventListener('click',function(){
+      var id=t.getAttribute('data-id');
+      done[id]=!done[id];
+      store.set(dayKey,JSON.stringify(done));
+      refresh();
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    done={}; store.set(dayKey,JSON.stringify(done)); refresh();
+  });
+  refresh();
+
+  // ---- copy buttons ----
+  document.querySelectorAll('.copy-btn').forEach(function(b){
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      var card=b.closest('[data-copy]');
+      if(!card)return;
+      var el=card.querySelector('.copytext');
+      if(!el)return;
+      var txt=el.innerText;
+      function flash(){
+        var old=b.textContent;b.textContent='скопировано ✓';b.classList.add('copied');
+        setTimeout(function(){b.textContent=old;b.classList.remove('copied');},1400);
+      }
+      try{
+        navigator.clipboard.writeText(txt).then(flash,function(){fallback();});
+      }catch(err){fallback();}
+      function fallback(){
+        try{
+          var ta=document.createElement('textarea');ta.value=txt;
+          ta.style.position='fixed';ta.style.opacity='0';
+          document.body.appendChild(ta);ta.select();
+          document.execCommand('copy');document.body.removeChild(ta);
+          flash();
+        }catch(_){}
+      }
+    });
+  });
+
+  // ---- scroll reveal (с фолбэком) ----
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12});
+    reveals.forEach(function(el){io.observe(el);});
+    // страховка: если что-то не сработало за 1.5с — показать всё
+    setTimeout(function(){reveals.forEach(function(el){el.classList.add('in');});},1500);
+  }else{
+    reveals.forEach(function(el){el.classList.add('in');});
+  }
+})();
+</script>
+</body>
+</html>
